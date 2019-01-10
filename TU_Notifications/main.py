@@ -1,9 +1,9 @@
 import time
 import datetime
 from TU_Notifications import cacher
-
 l = open('log.txt', mode='a')
 l.write("{0}: Program started\n".format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+
 try:
     while True:
         if round(time.time()) % 86400 == 0:
