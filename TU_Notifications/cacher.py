@@ -1,5 +1,5 @@
-import checker
-import notifier
+from TU_Notifications import notifier, checker
+
 
 def find_new_updates():
     a = open("cache.txt", mode="a")

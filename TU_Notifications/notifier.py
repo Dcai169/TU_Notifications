@@ -1,5 +1,6 @@
 from requests import post
-import keys
+from TU_Notifications import keys
+
 url = "https://api.pushbullet.com"
 
 def send_notification(type_, title, body, url_):
@@ -7,5 +8,5 @@ def send_notification(type_, title, body, url_):
             "title":title,
             "body":body,
             "url":url_}
-    p = post(url+"/v2/pushes", data=data, headers=keys.pbkey)
+    p = post(url +"/v2/pushes", data=data, headers=keys.pbkey)
     return p
