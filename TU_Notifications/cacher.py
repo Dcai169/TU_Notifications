@@ -1,5 +1,5 @@
 from TU_Notifications import notifier, checker
-
+import webserver
 
 def find_new_updates():
     a = open("cache.txt", mode="a")
@@ -13,6 +13,7 @@ def find_new_updates():
                                        "{0} released".format(update),
                                        "https://firstfrc.blob.core.windows.net/frc2019/Manual/TeamUpdates/TeamUpdate{0}.pdf".format(update[12:])
                                        )
+    webserver.render(updates)
     a.write(out)
     a.close()
     r.close()
