@@ -1,0 +1,8 @@
+.idea/*
+venv/*
+cache.txt
+keys.py
+log.txt
+pip-selfcheck.json
+pyvenv.cfg
+TU_Notifications.iml
