@@ -8,4 +8,5 @@ def send_notification(type_, title, body, url_):
             "body":body,
             "url":url_}
     p = post(url+"/v2/pushes", data=data, headers=keys.pbkey)
+
     return p

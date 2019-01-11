@@ -1,16 +1,23 @@
 import time
 import datetime
-from TU_Notifications import cacher
+from TU_Notifications import cacher, logger
 
-l = open('log.txt', mode='a')
-l.write("{0}: Program started\n".format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+start_str = "{0}: Program started\n".format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+print(start_str)
+logger.write_log(start_str)
+
 try:
     while True:
         if round(time.time()) % 86400 == 0:
-            l.write("{0}: Checking for updates\n".format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+            check_str = "{0}: Checking for updates\n".format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+            print(check_str)
+            logger.write_log(check_str)
             c = cacher.find_new_updates()
             if c is not "":
-                l.write("{0}: Found new update, \"{1}\"\n".format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"),c))
+                update_str = "{0}: Found new update, \"{1}\"\n".format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"), c)
+                print(update_str)
+                logger.write_log(update_str)
 finally:
-    l.write("{0}: Program Stopped\n".format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
-    l.close()
+    stop_str = "{0}: Program Stopped\n".format(datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S"))
+    print(stop_str)
+    logger.write_log(stop_str)
