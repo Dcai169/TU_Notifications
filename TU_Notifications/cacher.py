@@ -6,13 +6,14 @@ def find_new_updates():
     r = open("cache.txt", mode="r")
     updates = checker.find_team_updates()
     out = ""
-    for update in updates:
-        if update not in r.read():
-            out += update + "\n"
-            notifier.send_notification("link", "New Team Update",
-                                       "{0} released".format(update),
-                                       "https://firstfrc.blob.core.windows.net/frc2019/Manual/TeamUpdates/TeamUpdate{0}.pdf".format(update[12:])
-                                       )
+    if updates is not None:
+        for update in updates:
+            if update not in r.read():
+                out += update + "\n"
+                notifier.send_notification("link", "New Team Update",
+                                           "{0} released".format(update),
+                                           "https://firstfrc.blob.core.windows.net/frc2019/Manual/TeamUpdates/TeamUpdate{0}.pdf".format(update[12:])
+                                           )
     a.write(out)
     a.close()
     r.close()
